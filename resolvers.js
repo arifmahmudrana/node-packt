@@ -1,10 +1,10 @@
 const u = require("url")
 const path = require("path")
 const {requestURL, reject} = require('./requester')
-const {saveToFile} = require("./persister")
+const {saveToFile, saveToDB} = require("./persister")
 const conf = require('./confs')
 
-const defaultTotal = 601;
+const defaultTotal = 608;
 const total = parseInt(process.argv[2] || defaultTotal)
 const defaultFile = 'courses.txt'
 const file = process.argv[3] || defaultFile
@@ -34,10 +34,10 @@ const resolveListPage = data => {
         requestURL(scope, selector)(offset, resolveListPage, reject, reject)
     }
     else {
-        saveToFile(courses, file)
+        // saveToFile(courses, file)
+        saveToDB(courses)
     }
 }
-
 
 module.exports = {
     resolveListPage
