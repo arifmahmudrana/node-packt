@@ -18,7 +18,7 @@ const saveCourse = courses => item => {
         .catch(error => {})
 }
 
-const saveToDB = courses => Object.keys(courses).keys(courses).forEach(saveCourse(courses))
+const saveToDB = courses => Object.keys(courses).forEach(saveCourse(courses))
 
 module.exports = {
     saveToFile,
